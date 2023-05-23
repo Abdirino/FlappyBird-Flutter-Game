@@ -45,50 +45,69 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Expanded(
-              flex: 2,
-              child: GestureDetector(
-                onTap: () {
-                  if (gameHasStarted) {
-                    jump();
-                  } else {
-                    startGame();
-                  }
-                },
-                child: AnimatedContainer(
-                  alignment: Alignment(0, birdYaxis),
-                  duration: Duration(milliseconds: 0),
-                  color: Colors.blue,
-                  child: MyBird(),
-                ),
+              flex: 3,
+              child: Stack(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      if (gameHasStarted) {
+                        jump();
+                      } else {
+                        startGame();
+                      }
+                    },
+                    child: AnimatedContainer(
+                      alignment: Alignment(0, birdYaxis),
+                      duration: Duration(milliseconds: 0),
+                      color: Colors.blue,
+                      child: MyBird(),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment(0, -0.4),
+                    child: gameHasStarted
+                        ? Text(" ")
+                        : Text(
+                            'T A P  T O  P L A Y',
+                            style: TextStyle(fontSize: 21),
+                          ),
+                  )
+                ],
               )),
-              Container(
-                height: 15,
-                color: Colors.green,
-              ),
+          Container(
+            height: 15,
+            color: Colors.green,
+          ),
           Expanded(
               child: Container(
             color: Colors.brown,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text('SCORE: ' ,style: TextStyle(color: Colors.white, fontSize: 20)),
+                    Text('SCORE:',
+                        style: TextStyle(color: Colors.white, fontSize: 18)),
                     SizedBox(
-                      height: 20,
+                      height: 18,
                     ),
-                    Text("0", style: TextStyle(color: Colors.white, fontSize: 35)),
+                    Text("0",
+                        style: TextStyle(color: Colors.white, fontSize: 30)),
                   ],
                 ),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text('BEST: ' ,style: TextStyle(color: Colors.white, fontSize: 20),),
-                    SizedBox(
-                      height: 20,
+                    Text(
+                      'BEST:',
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
-                    Text("10", style: TextStyle(color: Colors.white, fontSize: 35)),
+                    SizedBox(
+                      height: 18,
+                    ),
+                    Text("10",
+                        style: TextStyle(color: Colors.white, fontSize: 30)),
                   ],
                 )
               ],
